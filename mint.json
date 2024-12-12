@@ -3,8 +3,8 @@
   "name": "Documentaçao",
   "favicon": "/img.png",
   "colors": {
-    "primary": "#4FC06F", 
-    "light": "#4FC06F",
+    "primary": "#5656FF", 
+    "light": "#5656FF",
     "dark": "#0c0d14",
     "background": {
       "dark": "#0b0d0e"
