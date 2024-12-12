@@ -1,91 +1,59 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
-  "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
-  },
-  "favicon": "/favicon.svg",
+  "name": "Documentaçao",
+  "favicon": "/img.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#4FC06F", 
+    "light": "#4FC06F",
+    "dark": "#0c0d14",
+    "background": {
+      "dark": "#0b0d0e"
+    },
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#4FC06F",
+      "to": "#0095FF"
     }
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "GITHUB",
+      "url": "https://github.com/AwayScr"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Discord",
+    "url": "https://discord.gg/sPJKwSvKWX"
   },
-  "tabs": [
-    {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
+
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Começando agora",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "faq"
       ]
     },
+
+
     {
-      "group": "Essentials",
+      "group": "🎮 Integrações",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        {
+          "icon": "gamepad",
+          "group": "Multi Theft Auto",
+          "pages": [
+            "developers/mtasa"
+          ]
+        }
       ]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://linkedin.com/company/mintlify"
+    "github": "https://github.com/AwayScr"
+  },
+  "feedback": {
+    "raiseIssue": true,
+    "suggestEdit": true,
+    "thumbsRating": true
   }
 }

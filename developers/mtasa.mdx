@@ -1,0 +1,183 @@
+---
+title: 'Personalização'
+description: 'Esta é uma instrução sobre como criar um comando personalizado para o bot no arquivo commands.lua. Este comando personalizado permite executar ações específicas no seu servidor Discord, interagindo com o jogo MTA.'
+---
+
+### Como criar um comando personalizado?
+
+Claro, aqui está uma versão simplificada da instrução:
+
+1. No arquivo "commands.lua", você pode criar seus próprios comandos personalizados.
+2. No bot, o sistema requer que você forneça os argumentos primeiro. Por exemplo, o evento `removeBan` requer o argumento `id`, que é o ID do jogador.
+<CodeGroup>
+
+```html modelo comandos bot
+<!-- Como usar comandos personalizados no bot -->
+
+
+/cmdp evento:<nome_do_evento> args:<argumentos_do_evento>
+
+Exemplo:
+/cmdp evento:removerBan args:1
+
+Isso executa o evento 'removerBan' e passa '1' como argumento.
+
+```
+
+```html Outros Modelos para serem utilizados
+<!-- Outros Modelos -->
+
+
+Exemplo 1:
+/cmdp evento:enviarMensagem args:Olá, mundo!
+
+Exemplo 2:
+/cmdp evento:teleportarJogador args:100 200 300
+
+Exemplo 3:
+/cmdp evento:iniciarMissao args:Floresta 1
+
+
+```
+
+</CodeGroup>
+
+1. agora vamos configurar a logica de como utilizar o commands.lua.
+2. abra o arquivo dps de abrir o arquivo, você irá colar o código abaixo.
+
+
+
+<CodeGroup>
+```lua  commands.lua
+--  arquivo commands.lua:
+
+    ["test"] = function(admin, args)
+        if type(args) == "table" and type(args[1]) == "table" then
+
+            local playerID = tonumber(args[1][1])
+            local quantidade = tonumber(args[1][2])
+    
+            if not playerID then
+                return "Faltou argumento ID"
+            end
+    
+            if not quantidade then
+                return "Faltou quantidade, modelo: ID QUANTIDADE (1 200)"
+            end
+    
+            local player = getPlayerByID(playerID)
+    
+            if not player then
+                return "Jogador com ID " .. playerID .. " não encontrado."
+            end
+    
+            local playerName = getPlayerName(player)
+    
+      
+            return "O jogador " .. playerName .. " acabou de receber a quantidade de " .. quantidade
+        else
+            return "Formato de argumentos inválido. Use o formato: { { 'ID', 'QUANTIDADE' } }"
+        end
+    end
+```
+
+```lua  logica dos args
+--  10 maneiras como passar os argumentos:
+
+-- USE tonumber para passar como uma string
+
+ -- Passando um único argumento:
+
+if type(args) == "table" and type(args[1]) == "string" then
+    local arg1 = tonumber(args[1][1])
+    -- Faça algo com o argumento arg1
+end
+
+-- Passando dois argumentos:
+
+if type(args) == "table" and type(args[1]) == "string" and type(args[2]) == "string" then
+    local arg1 = tonumber(args[1][1])
+    local arg2 = args[1][2]
+    -- Faça algo com os argumentos arg1 e arg2
+end
+
+-- Passando três argumentos:
+
+if type(args) == "table" and type(args[1]) == "string" and type(args[2]) == "string" and type(args[3]) == "string" then
+    local arg1 = tonumber(args[1][2][3])
+    local arg2 = args[1][2]
+    local arg3 = args[1][2][3]
+    -- Faça algo com os argumentos arg1, arg2 e arg3
+end
+
+-- Passando uma tabela como argumento:
+
+if type(args) == "table" and type(args[1]) == "table" then
+    local innerTable = args[1][1]
+    -- Acesse os elementos da tabela innerTable conforme necessário
+end
+
+-- Passando uma tabela com vários argumentos:
+
+if type(args) == "table" then
+    for i, v in ipairs(args) do
+        -- Faça algo com cada argumento individualmente (v)
+    end
+end
+
+-- Passando um número como argumento:
+
+if type(args) == "table" and type(args[1]) == "number" then
+    local numberArg = args[1][1]
+    -- Faça algo com o argumento numberArg
+end
+
+-- Passando uma string e um número como argumentos:
+
+if type(args) == "table" and type(args[1]) == "string" and type(args[2]) == "number" then
+    local stringArg = args[1][1]
+    local numberArg = args[1][2]
+    -- Faça algo com os argumentos stringArg e numberArg
+end
+
+-- Passando uma string e uma tabela como argumentos:
+
+if type(args) == "table" and type(args[1]) == "string" and type(args[2]) == "table" then
+    local stringArg = args[1][1]
+    local tableArg = args[1][2]
+    -- Faça algo com os argumentos stringArg e tableArg
+end
+
+-- Passando uma tabela e um número como argumentos:
+
+if type(args) == "table" and type(args[1]) == "table" and type(args[2]) == "number" then
+    local tableArg = args[1]
+    local numberArg = args[2]
+    -- Faça algo com os argumentos tableArg e numberArg
+end
+
+-- Passando uma tabela com várias strings como argumento:
+
+if type(args) == "table" then
+    for i, v in ipairs(args) do
+        if type(v) == "string" then
+            -- Faça algo com cada string individualmente (v)
+        else
+            -- Lidar com argumentos inválidos, se necessário
+        end
+    end
+end
+
+
+```
+
+</CodeGroup>
+
+
+
+
+<Note>
+  É importante lembrar adiciona a verificação da conversão de string para número usando tonumber. Ele verifica se a conversão foi bem-sucedida antes de continuar com o processamento dos argumentos. Isso garante que o código lidará adequadamente com casos em que o usuário fornece argumentos inválidos.!
+</Note>
+
+<Warning>Ultimo atualização <Tooltip tip="Quarta feira, 08 de maio de 2024">08/05/2024</Tooltip></Warning>
